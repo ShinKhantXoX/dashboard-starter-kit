@@ -1,32 +1,37 @@
 import { AppShell, Container, MantineProvider } from '@mantine/core';
-import { useLocalStorage } from '@mantine/hooks';
+import { useDocumentTitle, useLocalStorage } from '@mantine/hooks';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { DefaultHeader } from './components/DefaultHeader';
 import { DefaultNavigation } from './components/DefaultNavigation';
 import { AppNotification } from "../components/AppNotification";
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 export const DefaultLayout = () => {
 
-    const [token, removeValue] = useLocalStorage({key: 'token' });
+    useDocumentTitle("Golden Yellow");
+    const [token] = useLocalStorage({key: 'token' });
     const [schema] = useLocalStorage({defaultValue: null, key: "color-schema"});
 
     const navigate = useNavigate();
-    console.log(token);
+    
+    // const checkToken = useCallback(() => {
+
+    //     if(token === undefined)
+    //     {
+    //         console.log('i am default undefined');
+    //         navigate("/auth/login")
+    //     }else {
+    //         navigate('/')
+    //     }
+
+    // }, [token])
 
     // useEffect(() => {
-    //     console.log(token);
-    //     if(token) {
-            
-    //     }else {
-    //         removeValue()
-    //         navigate('/auth/login')
-    //     }
-    // }, [])
+    //     checkToken();
+    // }, [token])
 
     return(
         <>
-            {token && (
                 <MantineProvider 
                 withGlobalStyles 
                 withNormalizeCSS 
@@ -37,7 +42,8 @@ export const DefaultLayout = () => {
                 <Container 
                     fluid sx={{
                         backgroundColor: "#FAFBFC",
-                        minHeight: "100vh"
+                        minHeight: "100vh",
+                        overflowX : "hidden"
                     }} 
                     p={0}
                 >
@@ -52,7 +58,6 @@ export const DefaultLayout = () => {
                 </Container>
                 
             </MantineProvider>
-            ) }
         </>
     )
 }

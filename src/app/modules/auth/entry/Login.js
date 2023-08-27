@@ -15,7 +15,7 @@ export const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [token, setToken, removeValue] = useLocalStorage({key: 'token', defaultValue : "hello world"});
+    const [token, setToken, removeValue] = useLocalStorage({key: 'token'});
 
     const [payload, setPayload] = useState({
         email: '',
@@ -74,10 +74,10 @@ export const Login = () => {
 
     return(
         <Grid gutter={0}>
-            <Grid.Col sm={12} md={8}>
+            <Grid.Col sm={12} md={8} className=" login-res">
                 <Flex
                     h={"100vh"}
-                    direction={"column"}
+                    direction={{ sm: "row" }}
                     justify={"center"}
                     align={"center"}
                     sx={{ backgroundColor: "#8B57F9"}}

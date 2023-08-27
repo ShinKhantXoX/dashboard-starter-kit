@@ -55,6 +55,7 @@ export const UpdateUser = ({ dataSource, update }) => {
 
     useEffect(() => {
         if(dataSource) {
+            console.log(dataSource);
             setPayload(dataSource);
         }
     },[dataSource]);
