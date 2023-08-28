@@ -14,6 +14,8 @@ import { inclusionRoute } from "./modules/inclusion/inclusionRoute";
 import { itineraryRoute } from "./modules/itinerary/itineraryRoute";
 import { packageItineraryRoute } from "./modules/packages-itinerary/packageItineraryRoute";
 import { packageInclusionRoute } from "./modules/packages-inclusion/packageInclusionRoute";
+import { newRoute } from "./modules/news/newRoute";
+import { newContentRoute } from "./modules/news-content/newContentRoute";
 
 export const routers = createBrowserRouter([
   {
@@ -30,7 +32,9 @@ export const routers = createBrowserRouter([
       ...inclusionRoute,
       ...itineraryRoute,
       ...packageItineraryRoute,
-      ...packageInclusionRoute
+      ...packageInclusionRoute,
+      ...newRoute,
+      ...newContentRoute
     ],
   },
   {

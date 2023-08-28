@@ -9,7 +9,8 @@ import {
   IconFileText,
   IconList,
   IconMist,
-  IconClipboardData
+  IconNews,
+  IconBlockquote
  } from "@tabler/icons-react";
 
 export const navList = [
@@ -39,6 +40,12 @@ export const navList = [
     ] },
     { icon: <IconFileText />, label: "Package Inclusion", url: null, children: [
       { icon: <IconCircle />, label: "List", url: '/package-inclusion' },
+    ] },
+    { icon: <IconNews />, label: "News", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/news' },
+    ] },
+    { icon: <IconBlockquote />, label: "News Content", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/news-content' },
     ] },
     { icon: <IconPolaroid />, label: "Gallery", url: "/media", children: [] },
 ]
