@@ -62,7 +62,7 @@ export const NewDetail = () => {
                                 <DelButton 
                                     title="Are you sure to delete?"
                                     message="Do you want to delete this news?"
-                                    action={`news/${params.id}`}
+                                    action={`news/destroy/${params.id}`}
                                     callbackUrl={"/news"}
                                 />
                             </Group>

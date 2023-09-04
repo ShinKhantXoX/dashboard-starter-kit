@@ -9,7 +9,7 @@ import Placeholder from "@tiptap/extension-placeholder";
 import { useEditor } from "@tiptap/react";
 import { FormValidationMessage } from "./FormValidationMessage";
 
-export const TextEditor = ({ onEdit, errors, loading, dataSource }) => {
+export const TextEditor = ({ onEdit, errors, loading, dataSource, setValue }) => {
 
     const editor = useEditor({
         extensions: [
@@ -27,11 +27,14 @@ export const TextEditor = ({ onEdit, errors, loading, dataSource }) => {
             })
         ],
         content: dataSource ? dataSource.description : "",
+        onCreate({ editor }) {
+            setValue(editor.getJSON())
+        }
     });
 
     return(
         <>
-            <RichTextEditor editor={editor} h={300}>
+            <RichTextEditor editor={editor} h={300} style={{ overflow : 'hidden' }}>
                 <RichTextEditor.Toolbar sticky>
                     <RichTextEditor.ControlsGroup>
                         <RichTextEditor.Bold />

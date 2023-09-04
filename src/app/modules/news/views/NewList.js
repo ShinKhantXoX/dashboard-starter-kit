@@ -24,8 +24,16 @@ export const NewList = () => {
     const dispatch = useDispatch(); 
 
     const columns = [
-        { accessor: "title", title: 'Title', sortable: true },
-        { accessor: "description", title: 'Description', sortable: true },
+        { accessor: "title", title: 'Title', sortable: true, render : ({title}) => {
+            return (
+                <div>{title?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "description", title: 'Description', sortable: true, render : ({description}) => {
+            return (
+                <div>{description?.substring(0,5)} ...</div>
+            )
+        } },
         { accessor: "title_photo", title: 'City Photo', sortable: true, render: ({title_photo}) => {
             return (
                 <>
@@ -92,7 +100,7 @@ export const NewList = () => {
         }
 
         if(response && response.status === 200) {
-            setRecord(response.data);
+            setRecord(response?.data?.data);
             setTotal(response.data.total);
             setLoading(false);
             return;
@@ -121,7 +129,7 @@ export const NewList = () => {
 
                     <Group> 
                         <NavButton label="Create" disabled={loading} click={() => navigate("/news/new")} />
-                        <NavButton label="Export" disabled={loading} click={() => console.log("")} />
+                        {/* <NavButton label="Export" disabled={loading} click={() => console.log("")} /> */}
                     </Group>
                 </Flex>
             </Grid.Col>

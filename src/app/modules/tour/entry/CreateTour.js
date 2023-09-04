@@ -39,7 +39,8 @@ import { datetime } from "../../../helpers/dateFormat";
     const [type, setType] = useState("");
     const [style, setStyle] = useState("");
     const [forWhom, setForWhom] = useState("");
-    const [date, setDate] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
     const [cityId, setCityId] = useState();
     const [mainPayload, setMainPayload] = useState({
       name : '',
@@ -55,7 +56,8 @@ import { datetime } from "../../../helpers/dateFormat";
       type : '',
       for_whom : '',
       tour_photo: '',
-      date : ''
+      start_date : '',
+      end_date: ''
     })
     const [errors, setErrors] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -147,12 +149,13 @@ import { datetime } from "../../../helpers/dateFormat";
         style: style,
         type : type,
         for_whom : forWhom,
-        date : datetime(date),
+        start_date : datetime(startDate),
+        end_date : datetime(endDate),
         name : name,
         city_id : cityId,
-        tour_photo : selectImage?.url
+        tour_photo : [selectImage?.url]
         })
-    }, [selectImage, name,cityId,overview,price,salePrice,location,depature,theme,duration,rating,type,forWhom,date])
+    }, [selectImage, name,cityId,overview,price,salePrice,location,depature,theme,duration,rating,type,forWhom,startDate,endDate])
   
     useEffect(() => {
         loadingData();
@@ -392,7 +395,11 @@ import { datetime } from "../../../helpers/dateFormat";
                 }
               />
 
-              <DatePicker value={date} onChange={setDate} />
+              <label>Start Date</label>
+              <DatePicker value={startDate} onChange={setStartDate} />
+
+              <label>End Date</label>
+              <DatePicker value={endDate} onChange={setEndDate} />
   
               <SaveButton
                 loading={loading}

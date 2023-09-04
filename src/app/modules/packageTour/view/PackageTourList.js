@@ -139,7 +139,7 @@ export const PackageTourList = () => {
         }
 
         if(response && response.status === 200) {
-            setRecord(response.data);
+            setRecord(response?.data?.data);
             setTotal(response.data.total);
             setLoading(false);
             return;
@@ -168,7 +168,7 @@ export const PackageTourList = () => {
 
                     <Group> 
                         <NavButton label="Create" disabled={loading} click={() => navigate("/package-tour/new")} />
-                        <NavButton label="Export" disabled={loading} click={() => console.log("")} />
+                        {/* <NavButton label="Export" disabled={loading} click={() => console.log("")} /> */}
                     </Group>
                 </Flex>
             </Grid.Col>

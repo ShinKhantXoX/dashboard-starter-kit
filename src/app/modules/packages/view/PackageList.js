@@ -24,7 +24,11 @@ export const PackageList = () => {
     const dispatch = useDispatch(); 
 
     const columns = [
-        { accessor: "name", title: 'Country', sortable: true },
+        { accessor: "name", title: 'Country', sortable: true, render : ({name}) => {
+            return (
+                <div>{name?.substring(0,5)} ...</div>
+            )
+        } },
         { accessor: "package_photo", title: 'Package Photo', sortable: true, render: ({package_photo}) => {
             return (
                 <>
@@ -91,7 +95,7 @@ export const PackageList = () => {
         }
 
         if(response && response.status === 200) {
-            setRecord(response.data);
+            setRecord(response?.data?.data);
             setTotal(response.data.total);
             setLoading(false);
             return;
@@ -120,7 +124,7 @@ export const PackageList = () => {
 
                     <Group> 
                         <NavButton label="Create" disabled={loading} click={() => navigate("/package/new")} />
-                        <NavButton label="Export" disabled={loading} click={() => console.log("")} />
+                        {/* <NavButton label="Export" disabled={loading} click={() => console.log("")} /> */}
                     </Group>
                 </Flex>
             </Grid.Col>

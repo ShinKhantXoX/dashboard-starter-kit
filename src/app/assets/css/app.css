@@ -65,6 +65,10 @@
     left: -16px;
 }
 
+.img-active {
+    border: 5px solid orangered
+}
+
 /** Overwrite **/
 .mantine-InputWrapper-label {
     font-weight: 900;
@@ -112,8 +116,8 @@
 }
 
 .media-photo {
-    width: 400px;
-    height: 300px;
+    width: 300px;
+    height: 200px;
     margin: 5px;
     border-radius: 10px;
 }

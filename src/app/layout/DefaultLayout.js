@@ -5,59 +5,61 @@ import { DefaultHeader } from './components/DefaultHeader';
 import { DefaultNavigation } from './components/DefaultNavigation';
 import { AppNotification } from "../components/AppNotification";
 import { useCallback, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 export const DefaultLayout = () => {
 
     useDocumentTitle("Golden Yellow");
-    const [token] = useLocalStorage({key: 'token' });
+    // const [token] = useLocalStorage({key: 'token' });
     const [schema] = useLocalStorage({defaultValue: null, key: "color-schema"});
 
     const navigate = useNavigate();
-    
-    // const checkToken = useCallback(() => {
 
-    //     if(token === undefined)
-    //     {
-    //         console.log('i am default undefined');
-    //         navigate("/auth/login")
-    //     }else {
-    //         navigate('/')
-    //     }
+    const token = useSelector((state) => state.notificaiton);
 
-    // }, [token])
+    useEffect(() => {   
 
-    // useEffect(() => {
-    //     checkToken();
-    // }, [token])
+        if(token?.token === undefined | token?.token === null | token?.token === '') {
+            console.log('token not found');
+            navigate('/auth/login')
+        }else {
+            navigate('/country')
+        }
+
+    }, [])
 
     return(
         <>
-                <MantineProvider 
-                withGlobalStyles 
-                withNormalizeCSS 
-                theme={{
-                    colorScheme: schema ? schema : "light"
-                }}
-            >
-                <Container 
-                    fluid sx={{
-                        backgroundColor: "#FAFBFC",
-                        minHeight: "100vh",
-                        overflowX : "hidden"
-                    }} 
-                    p={0}
+            {
+                token && (
+                    <MantineProvider 
+                    withGlobalStyles 
+                    withNormalizeCSS 
+                    theme={{
+                        colorScheme: schema ? schema : "light"
+                    }}
                 >
-                    <AppShell
-                        padding="md"
-                        navbar={ <DefaultNavigation />}
-                        header={<DefaultHeader />}
+                    <Container 
+                        fluid sx={{
+                            backgroundColor: "#FAFBFC",
+                            minHeight: "100vh",
+                            overflowX : "hidden"
+                        }} 
+                        p={0}
                     >
-                        <AppNotification />
-                        <Outlet />
-                    </AppShell>
-                </Container>
-                
-            </MantineProvider>
+                        <AppShell
+                            padding="md"
+                            navbar={ <DefaultNavigation />}
+                            header={<DefaultHeader />}
+                        >
+                            <AppNotification />
+                            <Outlet />
+                        </AppShell>
+                    </Container>
+                    
+                </MantineProvider>
+                )
+            }
         </>
     )
 }

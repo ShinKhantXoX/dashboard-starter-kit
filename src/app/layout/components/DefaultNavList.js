@@ -47,5 +47,8 @@ export const navList = [
     { icon: <IconBlockquote />, label: "News Content", url: null, children: [
       { icon: <IconCircle />, label: "List", url: '/news-content' },
     ] },
+    { icon: <IconBlockquote />, label: "Query Form", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/query-form' },
+    ] },
     { icon: <IconPolaroid />, label: "Gallery", url: "/media", children: [] },
 ]

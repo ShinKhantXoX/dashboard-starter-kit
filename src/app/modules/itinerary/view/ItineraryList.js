@@ -24,11 +24,31 @@ export const ItineraryList = () => {
     const dispatch = useDispatch(); 
 
     const columns = [
-        { accessor: "name", title: 'Country', sortable: true },
-        { accessor: "description", title: 'Decription', sortable: true },
-        { accessor: "meal", title: 'Meal', sortable: true },
-        { accessor: "accommodation", title: 'Accommodation', sortable: true },
-        { accessor: "note", title: 'Note', sortable: true },
+        { accessor: "name", title: 'Country', sortable: true, render : ({name}) => {
+            return (
+                <div>{name?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "description", title: 'Decription', sortable: true, render : ({description}) => {
+            return (
+                <div>{description?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "meal", title: 'Meal', sortable: true, render : ({meal}) => {
+            return (
+                <div>{meal?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "accommodation", title: 'Accommodation', sortable: true, render : ({accommodation}) => {
+            return (
+                <div>{accommodation?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "note", title: 'Note', sortable: true, render : ({note}) => {
+            return (
+                <div>{note?.substring(0,5)} ...</div>
+            )
+        } },
         { accessor: "itinerary_photo", title: 'Country', sortable: true, render: ({itinerary_photo}) => {
             return (
                 <>
@@ -95,7 +115,7 @@ export const ItineraryList = () => {
         }
 
         if(response && response.status === 200) {
-            setRecord(response.data);
+            setRecord(response?.data?.data);
             setTotal(response.data.total);
             setLoading(false);
             return;
@@ -124,7 +144,7 @@ export const ItineraryList = () => {
 
                     <Group> 
                         <NavButton label="Create" disabled={loading} click={() => navigate("/itinerary/new")} />
-                        <NavButton label="Export" disabled={loading} click={() => console.log("")} />
+                        {/* <NavButton label="Export" disabled={loading} click={() => console.log("")} /> */}
                     </Group>
                 </Flex>
             </Grid.Col>

@@ -24,7 +24,11 @@ export const CityList = () => {
     const dispatch = useDispatch(); 
 
     const columns = [
-        { accessor: "name", title: 'City Name', sortable: true },
+        { accessor: "name", title: 'City Name', sortable: true, render : ({name}) => {
+            return (
+                <div>{name?.substring(0,5)} ...</div>
+            )
+        } },
         { accessor: "country_photo", title: 'City Photo', sortable: true, render: ({city_photo}) => {
             return (
                 <>
@@ -91,7 +95,7 @@ export const CityList = () => {
         }
 
         if(response && response.status === 200) {
-            setRecord(response.data);
+            setRecord(response?.data?.data);
             setTotal(response.data.total);
             setLoading(false);
             return;
@@ -120,7 +124,7 @@ export const CityList = () => {
 
                     <Group> 
                         <NavButton label="Create" disabled={loading} click={() => navigate("/city/new")} />
-                        <NavButton label="Export" disabled={loading} click={() => console.log("")} />
+                        {/* <NavButton label="Export" disabled={loading} click={() => console.log("")} /> */}
                     </Group>
                 </Flex>
             </Grid.Col>

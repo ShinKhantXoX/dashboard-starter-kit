@@ -24,13 +24,41 @@ export const PackageInclusionList = () => {
     const dispatch = useDispatch(); 
 
     const columns = [
-        { accessor: "package_tour_name", title: 'Package Tour Name', sortable: true },
-        { accessor: "meal", title: 'Meal', sortable: true },
-        { accessor: "category", title: 'Category', sortable: true },
-        { accessor: "price", title: 'Price', sortable: true },
-        { accessor: "sale_price", title: 'Sale Price', sortable: true },
-        { accessor: "private_price", title: 'Private Price', sortable: true },
-        { accessor: "sale_private_price", title: 'Sale Private Price', sortable: true },
+        { accessor: "package_tour_name", title: 'Package Tour Name', sortable: true, render : ({package_tour_name}) => {
+            return (
+                <div>{package_tour_name?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "meal", title: 'Meal', sortable: true, render : ({meal}) => {
+            return (
+                <div>{meal?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "category", title: 'Category', sortable: true, render : ({category}) => {
+            return (
+                <div>{category?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "price", title: 'Price', sortable: true, render : ({price}) => {
+            return (
+                <div>{price?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "sale_price", title: 'Sale Price', sortable: true, render : ({sale_price}) => {
+            return (
+                <div>{sale_price?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "private_price", title: 'Private Price', sortable: true, render : ({private_price}) => {
+            return (
+                <div>{private_price?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "sale_private_price", title: 'Sale Private Price', sortable: true, render : ({sale_private_price}) => {
+            return (
+                <div>{sale_private_price?.substring(0,5)} ...</div>
+            )
+        } },
         { accessor: "id", title: 'Control', sortable: true, render: ({id}) => {
             return (
                 <Button 
@@ -78,7 +106,7 @@ export const PackageInclusionList = () => {
         }
 
         if(response && response.status === 200) {
-            setRecord(response.data);
+            setRecord(response?.data?.data);
             setTotal(response.data.total);
             setLoading(false);
             return;
@@ -107,7 +135,7 @@ export const PackageInclusionList = () => {
 
                     <Group> 
                         <NavButton label="Create" disabled={loading} click={() => navigate("/package-inclusion/new")} />
-                        <NavButton label="Export" disabled={loading} click={() => console.log("")} />
+                        {/* <NavButton label="Export" disabled={loading} click={() => console.log("")} /> */}
                     </Group>
                 </Flex>
             </Grid.Col>

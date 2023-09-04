@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.0",
     "@emotion/react": "^11.11.1",
     "@mantine/carousel": "^6.0.14",
     "@mantine/core": "^6.0.16",

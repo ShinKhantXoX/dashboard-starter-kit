@@ -6,6 +6,7 @@ import { postRequest } from '../../../services/apiService';
 import { FormValidationMessage } from "../../../components/FormValidationMessage";
 import { useDispatch } from "react-redux";
 import { updateNotification } from "../../../redux/notificationSlice";
+import { setToken } from "../../../redux/tokenSlice";
 import coverImage from "../../../assets/images/photo.jpg";
 import { useNavigate } from "react-router-dom";
 
@@ -58,11 +59,12 @@ export const Login = () => {
             dispatch(updateNotification({
                 title: "Login Success",
                 message: response.message,
-                status: 'success'
+                status: 'success',
+                token : response.data.access_token
             }));
             setLoading(false);
-            if(token) {
-                navigate("/")
+            if(token !== undefined | token !== null) {
+                navigate("/country")
             }
             return;
         }
@@ -83,7 +85,7 @@ export const Login = () => {
                     sx={{ backgroundColor: "#8B57F9"}}
                 >
                     <Card m="50px" p="50px">
-                        <Card.Section> General POS Features </Card.Section>
+                        <Card.Section> Golden Yellow Feature </Card.Section>
                         <Card.Section sx={{
                             display: "flex",
                             flexDirection: "row",
@@ -98,15 +100,14 @@ export const Login = () => {
                                 src={coverImage} 
                             />
                             <ul>
-                                <li> Inventroy Management </li>
-                                <li> User Management </li>
-                                <li> Employee Management </li>
-                                <li> Invoicing </li>
-                                <li> Delivery Management </li>
-                                <li> Customer Management </li>
-                                <li> Supplier Management </li>
-                                <li> Profit & Loss </li>
-                                <li> Reporting </li>
+                                <li> Country Management </li>
+                                <li> City Management </li>
+                                <li> Tour Management </li>
+                                <li> Package Management </li>
+                                <li> Photo Management </li>
+                                <li> News Management </li>
+                                <li> Itinerary Management </li>
+                                <li> Inclusion Management </li>
                             </ul>
                         </Card.Section>
                     </Card>
@@ -122,14 +123,14 @@ export const Login = () => {
                     align={"center"}
                 >
                     <Box>
-                        <Text size={30}> General POS </Text>
+                        <Text size={30}> Golden Yellow </Text>
 
                         <TextInput 
                             w={{md: "300px"}}
                             icon={<IconUser size={20}/>}
                             placeholder="Enter your email"
-                            label="email"
-                            description="email can be email, phone number or email"
+                            label="Email"
+                            description="email must be .com"
                             error={errors && errors['email'] && (<FormValidationMessage message={errors['email'][0]} />)}
                             my={10}
                             value={payload.email}

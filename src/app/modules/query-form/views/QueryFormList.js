@@ -7,121 +7,137 @@ import { getReqeust } from "../../../services/apiService";
 import { useDispatch } from "react-redux";
 import { updateNotification } from "../../../redux/notificationSlice";
 import { NavButton } from "../../../components/NavButton";
-import { tourParamsInit } from "../useTourParams";
+import { queryFormParamsInit } from "../useQueryFormParams";
 import { minHeight, paginationSize, recordsPerPageOptions } from "../../../config/datatable";
-import { TourSearch } from "../entry/TourSearch";
+import { QueryFormSearch } from "../entry/QueryFormSearch";
 
-export const TourList = () => {
-    useDocumentTitle("Tour List");
+export const QueryFormList = () => {
+    useDocumentTitle("Query Form List");
 
     const [loading, setLoading] = useState(false);
     const [records, setRecord] = useState([]);
     const [total, setTotal] = useState(0);
-    const [params, setParams] = useState(tourParamsInit);
+    const [params, setParams] = useState(queryFormParamsInit);
     const [sortStatus, setSortStatus] = useState({ columnAccessor: 'id', direction: 'asc' });
  
     const navigate = useNavigate();
     const dispatch = useDispatch(); 
 
     const columns = [
-        { accessor: "name", title: 'Tour', sortable: true, render : ({name}) => {
+        { accessor: "travel_month", title: 'Travel Month', sortable: true, render : ({travel_month}) => {
             return (
                 <div>
-                    {name?.substring(0,5)} ...
+                    {travel_month?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "city_name", title: 'City Name', sortable: true, render : ({city_name}) => {
+        { accessor: "travel_year", title: 'Travel Year', sortable: true, render : ({travel_year}) => {
             return (
                 <div>
-                    {city_name?.substring(0,5)} ...
+                    {travel_year?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "overview", title: 'Overview', sortable: true, render : ({overview}) => {
+        { accessor: "stay_days", title: 'Stay Days', sortable: true},
+        { accessor: "budget", title: 'Budget', sortable: true},
+        { accessor: "adult_count", title: 'Adult Count', sortable: true},
+        { accessor: "child_count", title: 'Child Count', sortable: true},
+        { accessor: "interest", title: 'Interest', sortable: true, render : ({interest}) => {
             return (
                 <div>
-                    {overview?.substring(0,5)} ...
+                    {interest?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "price", title: 'Price', sortable: true, render : ({price}) => {
+        { accessor: "destinations", title: 'Destinations', sortable: true, render : ({destinations}) => {
             return (
                 <div>
-                    {price?.substring(0,5)} ...
+                    {destinations?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "sale_price", title: 'Sale Price', sortable: true, render : ({sale_price}) => {
+        { accessor: "f_name", title: 'First Name', sortable: true, render : ({f_name}) => {
             return (
                 <div>
-                    {sale_price?.substring(0,5)} ...
+                    {f_name?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "location", title: 'Mon', sortable: true },
-        { accessor: "departure", title: 'Departure', sortable: true, render : ({depature}) => {
+        { accessor: "l_name", title: 'Last Name', sortable: true, render : ({l_name}) => {
             return (
                 <div>
-                    {depature?.substring(0,5)} ...
+                    {l_name?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "theme", title: 'Theme', sortable: true, render : ({theme}) => {
+        { accessor: "email", title: 'Email', sortable: true, render : ({email}) => {
             return (
                 <div>
-                    {theme?.substring(0,5)} ...
+                    {email?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "duration", title: 'Duration', sortable: true, render : ({duration}) => {
+        { accessor: "phone", title: 'Phone', sortable: true, render : ({phone}) => {
             return (
                 <div>
-                    {duration?.substring(0,5)} ...
+                    {phone?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "rating", title: 'Rating', sortable: true },
-        { accessor: "type", title: 'Type', sortable: true, render : ({type}) => {
+        { accessor: "own_country", title: 'Own Country', sortable: true, render : ({own_country}) => {
             return (
                 <div>
-                    {type?.substring(0,5)} ...
+                    {own_country?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "style", title: 'Style', sortable: true, render : ({style}) => {
+        { accessor: "accommodation", title: 'Accommodation', sortable: true, render : ({accommodation}) => {
             return (
                 <div>
-                    {style?.substring(0,5)} ...
+                    {accommodation?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "for_whom", title: 'For Whom', sortable: true, render : ({for_whom}) => {
+        { accessor: "how_u_know", title: 'How U Know', sortable: true, render : ({how_u_know}) => {
             return (
                 <div>
-                    {for_whom?.substring(0,5)} ...
+                    {how_u_know?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "tour_photo", title: 'Package Photo', sortable: true, render: ({tour_photo}) => {
+        { accessor: "other_information", title: 'Other Information', sortable: true, render : ({other_information}) => {
             return (
-                <>
-                    {
-                        tour_photo ? (
-                            <Image
-                            src={tour_photo ? tour_photo : null} 
-                            width={50}
-                            height={50}
-                            mx={'auto'}
-                            withPlaceholder
-                            />
-                        ) : (
-                            <Image w={20} h={20} radius="md" src={null} alt="Random image" withPlaceholder />
-                        )
-                    }
-                </>
+                <div>
+                    {other_information?.substring(0,5)} ...
+                </div>
             )
         } },
+        { accessor: "special_note", title: 'Special Note', sortable: true, render : ({special_note}) => {
+            return (
+                <div>
+                    {special_note?.substring(0,5)} ...
+                </div>
+            )
+        } },
+        // { accessor: "tour_photo", title: 'Package Photo', sortable: true, render: ({tour_photo}) => {
+        //     return (
+        //         <>
+        //             {
+        //                 tour_photo ? (
+        //                     <Image
+        //                     src={tour_photo ? tour_photo : null} 
+        //                     width={50}
+        //                     height={50}
+        //                     mx={'auto'}
+        //                     withPlaceholder
+        //                     />
+        //                 ) : (
+        //                     <Image w={20} h={20} radius="md" src={null} alt="Random image" withPlaceholder />
+        //                 )
+        //             }
+        //         </>
+        //     )
+        // } },
         { accessor: "id", title: 'Control', sortable: true, render: ({id}) => {
             return (
                 <Button 
@@ -155,7 +171,7 @@ export const TourList = () => {
 
     const loadingData = useCallback(async () => {
         setLoading(true);
-        const response = await getReqeust("tour/list", params);
+        const response = await getReqeust("form/list", params);
         console.log(response);
 
         if(response && (response.status === 401 || response.status === 500 || response.status === 403)) {
@@ -191,14 +207,14 @@ export const TourList = () => {
                     align={"center"}
                     justify={"space-between"}
                 >
-                    <TourSearch 
+                    <QueryFormSearch 
                         loading={loading}
                         submitCountrySearch={(e) => paginateHandler(e, 'search')}
                     />
 
                     <Group> 
-                        <NavButton label="Create" disabled={loading} click={() => navigate("/tour/new")} />
-                        <NavButton label="Export" disabled={loading} click={() => console.log("")} />
+                        {/* <NavButton label="Create" disabled={loading} click={() => navigate("/tour/new")} /> */}
+                        {/* <NavButton label="Export" disabled={loading} click={() => console.log("")} /> */}
                     </Group>
                 </Flex>
             </Grid.Col>

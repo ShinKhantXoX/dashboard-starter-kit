@@ -70,7 +70,7 @@ export const MediaList = () => {
                             <img
                             key={image.id} 
                             m={0}
-                            width={150}
+                            width={100}
                             height={100}
                             className=' media-photo'
                             mx="auto" radius="md" src={image.url} alt="Random image" />

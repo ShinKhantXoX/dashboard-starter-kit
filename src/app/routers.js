@@ -16,6 +16,7 @@ import { packageItineraryRoute } from "./modules/packages-itinerary/packageItine
 import { packageInclusionRoute } from "./modules/packages-inclusion/packageInclusionRoute";
 import { newRoute } from "./modules/news/newRoute";
 import { newContentRoute } from "./modules/news-content/newContentRoute";
+import { queryFormRoutes } from "./modules/query-form/queryFormRoute";
 
 export const routers = createBrowserRouter([
   {
@@ -34,7 +35,8 @@ export const routers = createBrowserRouter([
       ...packageItineraryRoute,
       ...packageInclusionRoute,
       ...newRoute,
-      ...newContentRoute
+      ...newContentRoute,
+      ...queryFormRoutes
     ],
   },
   {

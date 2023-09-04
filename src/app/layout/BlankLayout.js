@@ -34,7 +34,7 @@ export const BlankLayout = () => {
                 colorScheme: colorScheme,
             }}
         >
-            { token ? (navigate('/')) : (
+            { token !== undefined ? (navigate('/')) : (
                 <Container fluid sx={{backgroundColor: "#FAFBFC",height: "100vh"}} p={0}>
                     <AppNotification />
                     <Outlet />

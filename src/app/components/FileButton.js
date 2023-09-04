@@ -12,6 +12,8 @@ export const FileButton = ({ title, message, action, callbackUrl, url = null }) 
 
   const [loading, setLoading] = useState(false);
 
+  const [activeImage, setActiveImage] = useState('')
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -28,10 +30,8 @@ export const FileButton = ({ title, message, action, callbackUrl, url = null }) 
     for (let i = 0; i < e.length; i++) {
       photos.append("photos[]", e[i], e[i].name);
     }
-    console.log(photos);
 
     const response = await postRequest("/photo/store", photos);
-    console.log(response);
     getPhotos();
   };
 
@@ -39,12 +39,14 @@ export const FileButton = ({ title, message, action, callbackUrl, url = null }) 
     getPhotos();
   }, []);
 
-  console.log(photo);
-
   const selectHandler = (e) => {
     console.log(e);
     dispatch(setImage(selectPhoto)) 
     close()
+  }
+
+  const handleActiveImage = (e) => {
+    setActiveImage(e)
   }
 
   return (
@@ -83,7 +85,7 @@ export const FileButton = ({ title, message, action, callbackUrl, url = null }) 
                 multiple
                 className=" photo"
                 type="file"
-                accept="image/jpg,image/pjeg,image/png"
+                accept="image/jpg,image/jpeg,image/png"
                 onChange={(e) => handleSubmit([...e.target.files])}
                 hidden
               />
@@ -93,18 +95,26 @@ export const FileButton = ({ title, message, action, callbackUrl, url = null }) 
 
         <div className=" flex-wrap">
           {photo?.data?.map((image) => {
+
+            const isActive = activeImage === image?.name;
+
             return (
               <img
                 key={image.id}
                 m={0}
                 width={150}
                 height={100}
-                className=" media-photo"
+                className={` media-photo ${isActive && 'img-active'}`}
                 mx="auto"
                 radius="md"
                 src={image.url}
                 alt="Random image"
-                onClick={() => setSelectPhoto(image)}
+                onClick={() => 
+                  (
+                    setSelectPhoto(image),
+                    handleActiveImage(image?.name)
+                  )
+                }
               />
             );
           })}

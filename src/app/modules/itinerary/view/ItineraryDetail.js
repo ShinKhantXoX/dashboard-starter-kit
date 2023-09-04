@@ -62,7 +62,7 @@ export const ItineraryDetail = () => {
                                 <DelButton 
                                     title="Are you sure to delete?"
                                     message="Do you want to delete this itinerary?"
-                                    action={`itinerary/destory/${params.id}`}
+                                    action={`itinerary/destroy/${params.id}`}
                                     callbackUrl={"/itinerary"}
                                 />
                             </Group>

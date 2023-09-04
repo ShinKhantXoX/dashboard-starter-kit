@@ -24,9 +24,21 @@ export const NewContentList = () => {
     const dispatch = useDispatch(); 
 
     const columns = [
-        { accessor: "title", title: 'Title', sortable: true },
-        { accessor: "subtitle", title: 'Sub Title', sortable: true },
-        { accessor: "content", title: 'Content', sortable: true },
+        { accessor: "title", title: 'Title', sortable: true, render : ({title}) => {
+            return (
+                <div>{title?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "subtitle", title: 'Sub Title', sortable: true, render : ({subtitle}) => {
+            return (
+                <div>{subtitle?.substring(0,5)} ...</div>
+            )
+        } },
+        { accessor: "content", title: 'Content', sortable: true, render : ({content}) => {
+            return (
+                <div>{content?.substring(0,5)} ...</div>
+            )
+        } },
         { accessor: "content_photo", title: 'City Photo', sortable: true, render: ({content_photo}) => {
             return (
                 <>
@@ -93,7 +105,7 @@ export const NewContentList = () => {
         }
 
         if(response && response.status === 200) {
-            setRecord(response.data);
+            setRecord(response?.data?.data);
             setTotal(response.data.total);
             setLoading(false);
             return;
@@ -122,7 +134,7 @@ export const NewContentList = () => {
 
                     <Group> 
                         <NavButton label="Create" disabled={loading} click={() => navigate("/news-content/new")} />
-                        <NavButton label="Export" disabled={loading} click={() => console.log("")} />
+                        {/* <NavButton label="Export" disabled={loading} click={() => console.log("")} /> */}
                     </Group>
                 </Flex>
             </Grid.Col>

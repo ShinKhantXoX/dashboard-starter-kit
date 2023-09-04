@@ -19,6 +19,7 @@ import {
   import { useNavigate } from "react-router-dom";
   import { NavButton } from "../../../components/NavButton";
   import { FileButton } from "../../../components/FileButton";
+  import { TextEditor } from "../../../components/TextEditor"
   
   export const CreateItinerary = () => {
     useDocumentTitle("New Itinerary");
@@ -44,6 +45,7 @@ import {
   
     const dispatch = useDispatch();
     const navigate = useNavigate();
+  
   
   
     const selectImage = useSelector((state) => state.imageSelect);
@@ -195,7 +197,14 @@ import {
                 }
               />
 
-                <TextInput
+              <TextEditor 
+              loading={loading}
+              error={errors}
+              setValue={setDescription}
+              onEdit={(e) => setDescription(e)}
+              />
+
+                {/* <TextInput
                 my={10}
                 placeholder="Enter full description"
                 label="Description"
@@ -208,7 +217,7 @@ import {
                 }
                 onChange={(e) => setDescription(e.target.value)
                 }
-              />
+              /> */}
 
                 <TextInput
                 my={10}
