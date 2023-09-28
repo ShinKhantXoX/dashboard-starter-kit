@@ -11,7 +11,6 @@ export const DefaultNavigation = () => {
   const dispatch = useDispatch();
 
   const drawer = useSelector(state => state.drawer);
-  console.log(drawer);
   
     return(
         <>
@@ -25,7 +24,7 @@ export const DefaultNavigation = () => {
         >
           <Navbar.Section>
             <Group className="group-row between relative" pb={10}>
-              <Text> Application Menu </Text>
+              <Text> Golden Yellow Menu </Text>
             </Group>
             
             <Divider />

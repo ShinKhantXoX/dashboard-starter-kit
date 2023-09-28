@@ -1,22 +1,56 @@
-import { IconChartArea, IconChecklist, IconCircle, IconHome2, IconLockAccess, IconMap2, IconReport, IconSettings, IconShoppingCart, IconUserCheck, IconUserHeart, IconUsers } from "@tabler/icons-react";
+import { 
+  IconCircle, 
+  IconFlag3,
+  IconPolaroid,
+  IconBuildingSkyscraper,
+  IconTag,
+  IconBalloon,
+  IconArticle,
+  IconFileText,
+  IconList,
+  IconMist,
+  IconNews,
+  IconBlockquote,
+  IconRecycle
+ } from "@tabler/icons-react";
 
 export const navList = [
-    { icon: <IconHome2 />, label: "Dashboard", url: "/dashboard", children: [] },
-    { icon: <IconShoppingCart />, label: "Sale", url: "/sale", children: [] },
-    { icon: <IconChecklist />, label: "Inventory", url: null, children: [
-      { icon: <IconCircle />, label: "Item", url: '/inventory/item' },
-      { icon: <IconCircle />, label: "Category", url: '/inventory/category' }
+    { icon: <IconFlag3 />, label: "Country", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/country' },
     ] },
-    { icon: <IconUserHeart />, label: "CRM", url: null, children: [
-      { icon: <IconCircle />, label: "Customer", url: '/crm/customer' },
+    { icon: <IconBuildingSkyscraper />, label: "City", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/city' },
     ] },
-    { icon: <IconChartArea />, label: "Sale Report", url: null, children: [] },
-    { icon: <IconUserCheck />, label: "Supplier", url: null, children: [] },
-    { icon: <IconMap2 />, label: "Delivery", url: null, children: [] },
-    { icon: <IconLockAccess />, label: "Role & Permission", url: null, children: [] },
-    { icon: <IconUsers />, label: "User", url: null,  children: [
-      { icon: <IconCircle />, label: "List", url: '/user' }
-    ]},
-    { icon: <IconReport />, label: "Report", url: null, children: [] },
-    { icon: <IconSettings />, label: "Setting", url: null, children: [] },
+    { icon: <IconBalloon />, label: "Tour", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/tour' },
+    ] },
+    { icon: <IconTag />, label: "Package", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/package' },
+    ] },
+    { icon: <IconArticle />, label: "Package Tour", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/package-tour' },
+    ] },
+    { icon: <IconMist />, label: "Package Itinerary", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/package-itinerary' },
+    ] },
+    { icon: <IconList />, label: "Itinerary", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/itinerary' },
+    ] },
+    { icon: <IconFileText />, label: "Inclusion", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/inclusion' },
+    ] },
+    { icon: <IconFileText />, label: "Package Inclusion", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/package-inclusion' },
+    ] },
+    { icon: <IconNews />, label: "News", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/news' },
+    ] },
+    { icon: <IconBlockquote />, label: "News Content", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/news-content' },
+    ] },
+    { icon: <IconBlockquote />, label: "Query Form", url: null, children: [
+      { icon: <IconCircle />, label: "List", url: '/query-form' },
+    ] },
+    { icon: <IconPolaroid />, label: "Gallery", url: "/media", children: [] },
+    { icon: <IconRecycle color="red"/>, label: <p style={{ color : 'red' }}>Recycle</p>, url: "/bin", children: [] },
 ]

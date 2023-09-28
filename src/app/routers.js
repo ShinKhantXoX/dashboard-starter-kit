@@ -4,8 +4,20 @@ import { DefaultLayout } from "./layout/DefaultLayout";
 import { BlankLayout } from "./layout/BlankLayout";
 import { Login } from "./modules/auth/entry/Login";
 import { userRoutes } from "./modules/user/userRoutes";
-import { inventoryRoutes } from "./modules/inventory/inventoryRoutes";
-import { crmRoutes } from "./modules/crm/customer/crmRoutes";
+import { countryRoute } from "./modules/country/countryRoute";
+import { mediaRoute } from "./modules/media/mediaRoute";
+import { cityRoute } from "./modules/city/cityRoute";
+import { packageRoutes } from "./modules/packages/packageRoute";
+import { tourRoutes } from "./modules/tour/tourRoute";
+import { packageTourRoutes } from "./modules/packageTour/packageTourRoute";
+import { inclusionRoute } from "./modules/inclusion/inclusionRoute";
+import { itineraryRoute } from "./modules/itinerary/itineraryRoute";
+import { packageItineraryRoute } from "./modules/packages-itinerary/packageItineraryRoute";
+import { packageInclusionRoute } from "./modules/packages-inclusion/packageInclusionRoute";
+import { newRoute } from "./modules/news/newRoute";
+import { newContentRoute } from "./modules/news-content/newContentRoute";
+import { queryFormRoutes } from "./modules/query-form/queryFormRoute";
+import { trashRoute } from "./modules/trash/trashRoute";
 
 export const routers = createBrowserRouter([
   {
@@ -13,8 +25,20 @@ export const routers = createBrowserRouter([
     element: <DefaultLayout />,
     children: [
       ...userRoutes, 
-      ...inventoryRoutes,
-      ...crmRoutes
+      ...countryRoute,
+      ...mediaRoute,
+      ...cityRoute,
+      ...packageRoutes,
+      ...tourRoutes,
+      ...packageTourRoutes,
+      ...inclusionRoute,
+      ...itineraryRoute,
+      ...packageItineraryRoute,
+      ...packageInclusionRoute,
+      ...newRoute,
+      ...newContentRoute,
+      ...queryFormRoutes,
+      ...trashRoute
     ],
   },
   {

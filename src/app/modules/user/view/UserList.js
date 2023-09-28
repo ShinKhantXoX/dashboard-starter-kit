@@ -86,7 +86,7 @@ export const UserList = () => {
         }
 
         if(response && response.status === 200) {
-            setRecord(response.data.data);
+            setRecord(response.data);
             setTotal(response.data.total);
             setLoading(false);
             return;

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.0",
     "@emotion/react": "^11.11.1",
     "@mantine/carousel": "^6.0.14",
     "@mantine/core": "^6.0.16",
@@ -37,11 +38,14 @@
     "dayjs": "^1.11.8",
     "embla-carousel-react": "^7.1.0",
     "mantine-datatable": "^2.7.1",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.14.0",
     "react-scripts": "5.0.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
