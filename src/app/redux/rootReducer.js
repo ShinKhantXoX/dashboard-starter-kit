@@ -9,5 +9,5 @@ export const rootReducer = combineReducers({
     notificaiton: notificationSlice,
     drawer: drawerSlice,
     imageSelect : selectImageSlice,
-    token : tokenSlice
+    tokenCheck : tokenSlice
 })

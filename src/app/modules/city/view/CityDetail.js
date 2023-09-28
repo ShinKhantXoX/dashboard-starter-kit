@@ -62,7 +62,7 @@ export const CityDetail = () => {
                                 <DelButton 
                                     title="Are you sure to delete?"
                                     message="Do you want to delete this city?"
-                                    action={`city/${params.id}`}
+                                    action={`city/destroy/${params.id}`}
                                     callbackUrl={"/city"}
                                 />
                             </Group>

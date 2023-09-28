@@ -13,13 +13,10 @@ import { datetime } from "../../../helpers/dateFormat";
 export const UpdateInclusion = ({ dataSource, update }) => {
     useDocumentTitle("Inclusion Detail And Update");
 
-    const [price, setPrice] = useState(dataSource?.price ? dataSource?.price : '');
-    const [salePrice, setSalePrice] = useState(dataSource?.sale_price ? dataSource?.sale_price : '');
-    const [privatePrice, setPrivatePrice] = useState(dataSource?.private_price ? dataSource?.private_price : '');
-    const [salePrivatePrice, setSalePrivatePrice] = useState(dataSource?.sale_private_price ? dataSource?.sale_private_price : '');
-    const [startDate, setStartDate] = useState(dataSource?.start_date ? dataSource?.start_date : '');
-    const [category, setCategory] = useState(dataSource?.category ? dataSource?.category : '');
-    const [endDate, setEndDate] = useState(dataSource?.end_date ? dataSource?.end_date : '');
+    const [accommodation, setAccommodation] = useState(dataSource?.accommodation ? dataSource?.accommodation : '');
+    const [meals, setMeals] = useState(dataSource?.meals ? dataSource?.meals : '');
+    const [included, setIncluded] = useState(dataSource?.included_activities ? dataSource?.included_activities : '');
+    const [transport, setTransport] = useState(dataSource?.transport ? dataSource?.transport : '');
     const [tour ,setTour] = useState();
     const [tourId, setTourId] = useState(dataSource?.tour_id ? dataSource?.tour_id : '');
     const [mainPayload, setMainPayload] = useState({
@@ -105,15 +102,13 @@ export const UpdateInclusion = ({ dataSource, update }) => {
     useEffect(() => {
         setMainPayload({
             tour_id : tourId,
-            start_date : datetime(startDate),
-            end_date : datetime(endDate),
-            price : price,
-            sale_price : salePrice,
-            private_price : privatePrice,
-            sale_private_price : salePrivatePrice,
-            category : category,
+            accommodation : accommodation,
+            meals : meals,
+            included_activities : included,
+            transport : transport
+            
         })
-    }, [ tourId,startDate,endDate,price,salePrice,privatePrice,salePrivatePrice,category])
+    }, [ tourId,accommodation,meals,included,transport])
 
     useEffect(() => {
         loadingData();
@@ -156,91 +151,73 @@ export const UpdateInclusion = ({ dataSource, update }) => {
                 )
             }
 
-                <TextInput 
-                    my={10}
-                    placeholder="Enter price"
-                    label="Name"
-                    type="number"
-                    disabled={loading}
-                    name="price"
-                    defaultValue={price ? price : ''}
-                    error={errors && errors['price'] && <FormValidationMessage message={errors['price'][0]}/>}
-                    onChange={(e) => setPrice(e.target.value)}
-                    required
-                />
-
-                <TextInput
+            <TextInput
                 my={10}
-                placeholder="Enter sale price"
-                label="Sale Price"
-                type="number"
+                placeholder="Enter accommodation"
+                label="Accommodation"
+                type="text"
+                defaultValue={dataSource?.accommodation}
                 disabled={loading}
-                defaultValue={salePrice ? salePrice : ''}
                 error={
                   errors &&
-                  errors["sale_price"] && (
-                    <FormValidationMessage message={errors["sale_price"][0]} />
+                  errors["accommodation"] && (
+                    <FormValidationMessage message={errors["accommodation"][0]} />
                   )
                 }
-                onChange={(e) => setSalePrice(e.target.value)
+                onChange={(e) => setAccommodation(e.target.value)
                 }
               />
 
                 <TextInput
                 my={10}
-                placeholder="Enter private price"
-                label="Private Price"
-                type="number"
+                placeholder="Enter meals"
+                label="Meals"
+                type="text"
+                defaultValue={dataSource?.meals}
                 disabled={loading}
-                defaultValue={privatePrice ? privatePrice : ''}
                 error={
                   errors &&
-                  errors["private_price"] && (
-                    <FormValidationMessage message={errors["private_price"][0]} />
+                  errors["meals"] && (
+                    <FormValidationMessage message={errors["meals"][0]} />
                   )
                 }
-                onChange={(e) => setPrivatePrice(e.target.value)
+                onChange={(e) => setMeals(e.target.value)
                 }
               />
 
                 <TextInput
                 my={10}
-                placeholder="Enter sale private price"
-                label="Sale private Price"
-                type="number"
+                placeholder="Enter included activities"
+                label="Included activities"
+                defaultValue={dataSource?.included_activities}
+                type="text"
                 disabled={loading}
-                defaultValue={salePrivatePrice ? salePrivatePrice : ''}
                 error={
                   errors &&
-                  errors["sale_private_price"] && (
-                    <FormValidationMessage message={errors["sale_private_price"][0]} />
+                  errors["included_activities"] && (
+                    <FormValidationMessage message={errors["included_activities"][0]} />
                   )
                 }
-                onChange={(e) => setSalePrivatePrice(e.target.value)
+                onChange={(e) => setIncluded(e.target.value)
                 }
               />
 
-                <TextInput
+              <TextInput
                 my={10}
-                placeholder="Enter category"
-                label="Category"
+                placeholder="Enter transport"
+                label="Transport"
+                type="text"
+                defaultValue={dataSource?.transport}
                 disabled={loading}
-                defaultValue={category ? category : ''}
                 error={
                   errors &&
-                  errors["category"] && (
-                    <FormValidationMessage message={errors["category"][0]} />
+                  errors["transport"] && (
+                    <FormValidationMessage message={errors["transport"][0]} />
                   )
                 }
-                onChange={(e) => setCategory(e.target.value)
+                onChange={(e) => setTransport(e.target.value)
                 }
               />
-
-                <label>Start Date</label>
-                <DatePicker defaultValue={startDate} my={20} value={startDate} onChange={setStartDate} />
-
-                <label>End Date</label>
-                <DatePicker defaultValue={endDate} my={20} value={endDate} onChange={setEndDate} />
 
 
                 <SaveButton 

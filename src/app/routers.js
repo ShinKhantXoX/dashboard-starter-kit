@@ -17,6 +17,7 @@ import { packageInclusionRoute } from "./modules/packages-inclusion/packageInclu
 import { newRoute } from "./modules/news/newRoute";
 import { newContentRoute } from "./modules/news-content/newContentRoute";
 import { queryFormRoutes } from "./modules/query-form/queryFormRoute";
+import { trashRoute } from "./modules/trash/trashRoute";
 
 export const routers = createBrowserRouter([
   {
@@ -36,7 +37,8 @@ export const routers = createBrowserRouter([
       ...packageInclusionRoute,
       ...newRoute,
       ...newContentRoute,
-      ...queryFormRoutes
+      ...queryFormRoutes,
+      ...trashRoute
     ],
   },
   {

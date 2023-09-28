@@ -62,7 +62,7 @@ export const InclusionDetail = () => {
                                 <DelButton 
                                     title="Are you sure to delete?"
                                     message="Do you want to delete this inclusion?"
-                                    action={`incluison/${params.id}`}
+                                    action={`inclusion/destroy/${params.id}`}
                                     callbackUrl={"/inclusion"}
                                 />
                             </Group>

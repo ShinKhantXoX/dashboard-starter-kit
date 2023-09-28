@@ -24,14 +24,13 @@ export const PackageTourList = () => {
     const dispatch = useDispatch(); 
 
     const columns = [
-        { accessor: "name", title: 'Tour', sortable: true, render : ({name}) => {
+        { accessor: "name", title: 'Package', sortable: true, render : ({name}) => {
             return (
                 <div>
                     {name?.substring(0,5)} ...
                 </div>
             )
         } },
-        { accessor: "city_name", title: 'City Name', sortable: true },
         { accessor: "overview", title: 'Overview', sortable: true },
         { accessor: "price", title: 'Price', sortable: true },
         { accessor: "sale_price", title: 'Sale Price', sortable: true },

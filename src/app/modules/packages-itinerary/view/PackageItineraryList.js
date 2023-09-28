@@ -24,7 +24,7 @@ export const PackageItineraryList = () => {
     const dispatch = useDispatch(); 
 
     const columns = [
-        { accessor: "name", title: 'Country', sortable: true, render : ({name}) => {
+        { accessor: "name", title: 'Name', sortable: true, render : ({name}) => {
             return (
                 <div>{name?.substring(0,5)} ...</div>
             )
@@ -34,27 +34,7 @@ export const PackageItineraryList = () => {
                 <div>{description?.substring(0,5)} ...</div>
             )
         } },
-        { accessor: "meal", title: 'Meal', sortable: true, render : ({meal}) => {
-            return (
-                <div>{meal?.substring(0,5)} ...</div>
-            )
-        } },
-        { accessor: "accommodation", title: 'Accommodation', sortable: true, render : ({accommodation}) => {
-            return (
-                <div>{accommodation?.substring(0,5)} ...</div>
-            )
-        } },
-        { accessor: "note", title: 'Note', sortable: true, render : ({note}) => {
-            return (
-                <div>{note?.substring(0,5)} ...</div>
-            )
-        } },
-        { accessor: "package_tour_name", title: 'Package Itinerary Name', sortable: true, render : ({package_tour_name}) => {
-            return (
-                <div>{package_tour_name?.substring(0,5)} ...</div>
-            )
-        } },
-        { accessor: "package_itinerary_photo", title: 'Country', sortable: true, render: ({package_itinerary_photo}) => {
+        { accessor: "package_itinerary_photo", title: 'Photo', sortable: true, render: ({package_itinerary_photo}) => {
             return (
                 <>
                     {
@@ -148,7 +128,7 @@ export const PackageItineraryList = () => {
                     />
 
                     <Group> 
-                        <NavButton label="Create" disabled={loading} click={() => navigate("/itinerary/new")} />
+                        <NavButton label="Create" disabled={loading} click={() => navigate("/package-itinerary/new")} />
                         {/* <NavButton label="Export" disabled={loading} click={() => console.log("")} /> */}
                     </Group>
                 </Flex>
@@ -157,7 +137,7 @@ export const PackageItineraryList = () => {
             <Grid.Col my={10}>
                 <Card p={20} className="card-border">
                     <Card.Section my={10}>
-                        <Text sx={{ fontSize: 20, fontWeight: 500}}> Itinerary List </Text>
+                        <Text sx={{ fontSize: 20, fontWeight: 500}}>Package Itinerary List </Text>
                         <Divider my={10} variant="dashed" />
                     </Card.Section>
 

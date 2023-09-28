@@ -24,41 +24,27 @@ export const InclusionList = () => {
     const dispatch = useDispatch(); 
 
     const columns = [
-        { accessor: "tour_name", title: 'Tour Name', sortable: true, render : ({tour_name}) => {
+        { accessor: "accommodation", title: 'Accommodation', sortable: true, render : ({accommodation}) => {
             return (
-                <div>{tour_name?.substring(0,5)} ...</div>
+                <div>{accommodation?.substring(0,10)} ...</div>
             )
         } },
-        { accessor: "meal", title: 'Meal', sortable: true, render : ({meal}) => {
+        { accessor: "meals", title: 'Meal', sortable: true, render : ({meals}) => {
             return (
-                <div>{meal?.substring(0,5)} ...</div>
+                <div>{meals?.substring(0,5)} ...</div>
             )
         } },
-        { accessor: "category", title: 'Category', sortable: true, render : ({category}) => {
+        { accessor: "included_activities", title: 'Included Activities', sortable: true, render : ({included_activities}) => {
             return (
-                <div>{category?.substring(0,5)} ...</div>
+                <div>{included_activities?.substring(0,5)} ...</div>
             )
         } },
-        { accessor: "price", title: 'Price', sortable: true, render : ({price}) => {
+        { accessor: "transport", title: 'Transport', sortable: true, render : ({transport}) => {
             return (
-                <div>{price?.substring(0,5)} ...</div>
+                <div>{transport?.substring(0,5)} ...</div>
             )
         } },
-        { accessor: "sale_price", title: 'Sale Price', sortable: true, render : ({sale_price}) => {
-            return (
-                <div>{sale_price?.substring(0,5)} ...</div>
-            )
-        } },
-        { accessor: "private_price", title: 'Private Price', sortable: true, render : ({private_price}) => {
-            return (
-                <div>{private_price?.substring(0,5)} ...</div>
-            )
-        } },
-        { accessor: "sale_private_price", title: 'Sale Private Price', sortable: true, render : ({sale_private_price}) => {
-            return (
-                <div>{sale_private_price?.substring(0,5)} ...</div>
-            )
-        } },
+        
         { accessor: "id", title: 'Control', sortable: true, render: ({id}) => {
             return (
                 <Button 

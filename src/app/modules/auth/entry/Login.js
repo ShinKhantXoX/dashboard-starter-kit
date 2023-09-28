@@ -6,7 +6,7 @@ import { postRequest } from '../../../services/apiService';
 import { FormValidationMessage } from "../../../components/FormValidationMessage";
 import { useDispatch } from "react-redux";
 import { updateNotification } from "../../../redux/notificationSlice";
-import { setToken } from "../../../redux/tokenSlice";
+import { setToken, setTokenRedux } from "../../../redux/tokenSlice";
 import coverImage from "../../../assets/images/photo.jpg";
 import { useNavigate } from "react-router-dom";
 
@@ -55,6 +55,7 @@ export const Login = () => {
         }
 
         if(response && response.status === 200) {
+            localStorage.setItem('token',JSON.stringify(response.data))
             setToken(response.data.access_token);
             dispatch(updateNotification({
                 title: "Login Success",
@@ -62,6 +63,9 @@ export const Login = () => {
                 status: 'success',
                 token : response.data.access_token
             }));
+            dispatch(setTokenRedux({
+                token : response.data
+            }))
             setLoading(false);
             if(token !== undefined | token !== null) {
                 navigate("/country")

@@ -1,3 +1,4 @@
+import QueryFormDetail from "./views/QueryFormDetail";
 import { QueryFormList } from "./views/QueryFormList";
 
 
@@ -13,10 +14,10 @@ export const queryFormRoutes = [
             //     path: "new",
             //     element: <CreateTour />
             // },
-            // {
-            //     path: ":id",
-            //     element: <TourDetail />
-            // }
+            {
+                path: ":id",
+                element: <QueryFormDetail />
+            }
         ],
     }
 ];

@@ -15,11 +15,19 @@ export const DefaultLayout = () => {
 
     const navigate = useNavigate();
 
-    const token = useSelector((state) => state.notificaiton);
+    const token = useSelector((state) => state.tokenCheck);
+    console.log(token);
 
     useEffect(() => {   
 
-        if(token?.token === undefined | token?.token === null | token?.token === '') {
+        if(token?.token?.access_token !== undefined | token?.token?.access_token !== null | token?.token?.access_token !== ''){
+            setTimeout(() => {
+                localStorage.clear();
+                navigate('/auth/login')
+            }, 3600000);
+        }
+
+        if(token?.token?.access_token === undefined) {
             console.log('token not found');
             navigate('/auth/login')
         }else {
@@ -27,6 +35,19 @@ export const DefaultLayout = () => {
         }
 
     }, [])
+    
+        useEffect(() => {
+        const handleTabClose = event => {
+          event.preventDefault();
+            localStorage.clear()
+        };
+    
+        window.addEventListener('beforeunload', handleTabClose);
+    
+        return () => {
+          window.removeEventListener('beforeunload', handleTabClose);
+        };
+      }, []);
 
     return(
         <>

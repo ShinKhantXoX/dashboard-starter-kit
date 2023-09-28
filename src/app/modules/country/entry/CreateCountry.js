@@ -11,7 +11,7 @@ import {
   Text,
   TextInput,
 } from "@mantine/core";
-import { useDocumentTitle } from "@mantine/hooks";
+import { useDocumentTitle, useLocalStorage } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 import { FormValidationMessage } from "../../../components/FormValidationMessage";
 import { postRequest } from "../../../services/apiService";
@@ -35,6 +35,8 @@ export const CreateCountry = () => {
   })
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const [token] = useLocalStorage({key: 'token' });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -75,6 +77,7 @@ export const CreateCountry = () => {
           title: "Country create",
           message: response.message,
           status: "success",
+          token : token
         })
       );
       setLoading(false);

@@ -36,11 +36,12 @@ export const MediaList = () => {
   return (
     <>
         <Card p={{ sm: 15, md: 20 , lg:30}} className=' card-border'>
-            <Center my={30}>
+            <Center my={30} py={10} className=' blockquote'>
 
             <form>
-            <Card.Section >
-                    <div className=' relative'>
+            <Card.Section py={20}>
+                    <div className=' relative'
+                    >
                         <IconCloudUpload 
                         className=' border-dash'
                         size={45}
@@ -50,6 +51,7 @@ export const MediaList = () => {
                         />
                         <div className=' border-dash-1'></div>
                     </div>
+
                     <input
                     multiple
                     className=' photo'
@@ -59,6 +61,7 @@ export const MediaList = () => {
                     hidden
                     />
             </Card.Section>
+
             </form>
 
             </Center>

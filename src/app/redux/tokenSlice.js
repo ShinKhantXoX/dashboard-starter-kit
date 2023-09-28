@@ -1,17 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = null;
+const token = localStorage.getItem('token');
+const initialState = token ? JSON.parse(token) : null;
 
 export const tokenSlice = createSlice({
-    name: "token",
+    name: "Token",
     initialState,
     reducers: {
-        setToken: (state, action) => {
+        setTokenRedux: (state, action) => {
+            localStorage.setItem('token', JSON.stringify(action.payload))
             state = action.payload;
             return state;
         }
     }
 });
 
-export const { setToken } = tokenSlice.actions;
+export const { setTokenRedux } = tokenSlice.actions;
+// export const tokenState = (state) => state.Token;
 export default tokenSlice.reducer;

@@ -22,25 +22,19 @@ import { DatePicker } from "@mantine/dates";
   export const CreateInclusion = () => {
     useDocumentTitle("New Inclusion");
 
-    const [price, setPrice] = useState('');
-    const [salePrice, setSalePrice] = useState('');
-    const [privatePrice, setPrivatePrice] = useState('');
-    const [salePrivatePrice, setSalePrivatePrice] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [category, setCategory] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [accommodation, setAccommodation] = useState('');
+    const [meals, setMeals] = useState('');
+    const [included, setIncluded] = useState('');
+    const [transport, setTransport] = useState('');
     const [tour ,setTour] = useState();
     const [tourId, setTourId] = useState();
 
     const [mainPayload, setMainPayload] = useState({
       tour_id : '',
-      start_date : '',
-      end_date : '',
-      price : '',
-      sale_price : '',
-      private_price : '',
-      sale_private_price : '',
-      category : '',
+      accommodation : '',
+      included_activities : '',
+      meals : '',
+      transport : ''
     })
     const [errors, setErrors] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -120,15 +114,13 @@ import { DatePicker } from "@mantine/dates";
     useEffect(() => {
         setMainPayload({
             tour_id : tourId,
-            start_date : startDate,
-            end_date : endDate,
-            price : price,
-            sale_price : salePrice,
-            private_price : privatePrice,
-            sale_private_price : salePrivatePrice,
-            category : category,
+            accommodation : accommodation,
+            meals : meals,
+            included_activities : included,
+            transport : transport
+            
         })
-    }, [ tourId,startDate,endDate,price,salePrice,privatePrice,salePrivatePrice,category])
+    }, [ tourId,accommodation,meals,included,transport])
 
     useEffect(() => {
         loadingData();
@@ -174,90 +166,70 @@ import { DatePicker } from "@mantine/dates";
                 )
             }
 
+
                 <TextInput
                 my={10}
-                placeholder="Enter Price"
-                label="Price"
-                type="number"
+                placeholder="Enter accommodation"
+                label="Accommodation"
+                type="text"
                 disabled={loading}
                 error={
                   errors &&
-                  errors["price"] && (
-                    <FormValidationMessage message={errors["price"][0]} />
+                  errors["accommodation"] && (
+                    <FormValidationMessage message={errors["accommodation"][0]} />
                   )
                 }
-                onChange={(e) => setPrice(e.target.value)
+                onChange={(e) => setAccommodation(e.target.value)
                 }
               />
 
                 <TextInput
                 my={10}
-                placeholder="Enter sale price"
-                label="Sale Price"
-                type="number"
+                placeholder="Enter meals"
+                label="Meals"
+                type="text"
                 disabled={loading}
                 error={
                   errors &&
-                  errors["sale_price"] && (
-                    <FormValidationMessage message={errors["sale_price"][0]} />
+                  errors["meals"] && (
+                    <FormValidationMessage message={errors["meals"][0]} />
                   )
                 }
-                onChange={(e) => setSalePrice(e.target.value)
+                onChange={(e) => setMeals(e.target.value)
                 }
               />
 
                 <TextInput
                 my={10}
-                placeholder="Enter private price"
-                label="Private Price"
-                type="number"
+                placeholder="Enter included activities"
+                label="Included activities"
+                type="text"
                 disabled={loading}
                 error={
                   errors &&
-                  errors["private_price"] && (
-                    <FormValidationMessage message={errors["private_price"][0]} />
+                  errors["included_activities"] && (
+                    <FormValidationMessage message={errors["included_activities"][0]} />
                   )
                 }
-                onChange={(e) => setPrivatePrice(e.target.value)
+                onChange={(e) => setIncluded(e.target.value)
                 }
               />
 
-                <TextInput
+              <TextInput
                 my={10}
-                placeholder="Enter sale private price"
-                label="Sale private Price"
-                type="number"
+                placeholder="Enter transport"
+                label="Transport"
+                type="text"
                 disabled={loading}
                 error={
                   errors &&
-                  errors["sale_private_price"] && (
-                    <FormValidationMessage message={errors["sale_private_price"][0]} />
+                  errors["transport"] && (
+                    <FormValidationMessage message={errors["transport"][0]} />
                   )
                 }
-                onChange={(e) => setSalePrivatePrice(e.target.value)
+                onChange={(e) => setTransport(e.target.value)
                 }
               />
-
-                <TextInput
-                my={10}
-                placeholder="Enter category"
-                label="Category"
-                disabled={loading}
-                error={
-                  errors &&
-                  errors["category"] && (
-                    <FormValidationMessage message={errors["category"][0]} />
-                  )
-                }
-                onChange={(e) => setCategory(e.target.value)
-                }
-              />
-
-                <label>Start Date</label>
-                <DatePicker miw={300} my={20} value={startDate} onChange={setStartDate} />
-
-                <label>End Date</label>
-                <DatePicker my={20} value={endDate} onChange={setEndDate} />
   
               <SaveButton
                 loading={loading}

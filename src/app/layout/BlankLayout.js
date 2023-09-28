@@ -34,13 +34,13 @@ export const BlankLayout = () => {
                 colorScheme: colorScheme,
             }}
         >
-            { token !== undefined ? (navigate('/')) : (
+            {/* { token !== undefined ? (navigate('/')) : ( */}
                 <Container fluid sx={{backgroundColor: "#FAFBFC",height: "100vh"}} p={0}>
                     <AppNotification />
                     <Outlet />
                 </Container>
                 
-            ) }
+            {/* ) } */}
         </MantineProvider>
     )
 }

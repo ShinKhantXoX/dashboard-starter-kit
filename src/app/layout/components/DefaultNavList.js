@@ -10,7 +10,8 @@ import {
   IconList,
   IconMist,
   IconNews,
-  IconBlockquote
+  IconBlockquote,
+  IconRecycle
  } from "@tabler/icons-react";
 
 export const navList = [
@@ -51,4 +52,5 @@ export const navList = [
       { icon: <IconCircle />, label: "List", url: '/query-form' },
     ] },
     { icon: <IconPolaroid />, label: "Gallery", url: "/media", children: [] },
+    { icon: <IconRecycle color="red"/>, label: <p style={{ color : 'red' }}>Recycle</p>, url: "/bin", children: [] },
 ]
