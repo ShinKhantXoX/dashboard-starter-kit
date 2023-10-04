@@ -74,6 +74,11 @@
 }
 
 /** Overwrite **/
+.mantine-kea9ny {
+    background-color: #ededed62;
+    opacity: .5 !important;
+}
+
 .mantine-InputWrapper-label {
     font-weight: 900;
     font-size: small;

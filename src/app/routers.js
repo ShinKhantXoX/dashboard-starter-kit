@@ -18,6 +18,7 @@ import { newRoute } from "./modules/news/newRoute";
 import { newContentRoute } from "./modules/news-content/newContentRoute";
 import { queryFormRoutes } from "./modules/query-form/queryFormRoute";
 import { trashRoute } from "./modules/trash/trashRoute";
+import { recycleRoute } from "./modules/recycle/RecycleRoute";
 
 export const routers = createBrowserRouter([
   {
@@ -28,17 +29,18 @@ export const routers = createBrowserRouter([
       ...countryRoute,
       ...mediaRoute,
       ...cityRoute,
-      ...packageRoutes,
+      // ...packageRoutes,
       ...tourRoutes,
-      ...packageTourRoutes,
+      // ...packageTourRoutes,
       ...inclusionRoute,
       ...itineraryRoute,
-      ...packageItineraryRoute,
-      ...packageInclusionRoute,
+      // ...packageItineraryRoute,
+      // ...packageInclusionRoute,
       ...newRoute,
       ...newContentRoute,
       ...queryFormRoutes,
-      ...trashRoute
+      ...recycleRoute
+      // ...trashRoute
     ],
   },
   {

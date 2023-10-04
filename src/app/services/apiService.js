@@ -62,6 +62,12 @@ export const putRequest = async (path, body) => {
     .catch((error) => httpReqestHandler(error));
 }
 
+export const patchRequest = async (path, body) => {
+    return await http.patch(path, body)
+    .then((response) => httpResponseHandler(response))
+    .catch((error) => httpReqestHandler(error));
+}
+
 export const delRequest = async (path) => {
     return await http.delete(path)
     .then((response) => httpResponseHandler(response))

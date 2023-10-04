@@ -24,24 +24,24 @@ export const navList = [
     { icon: <IconBalloon />, label: "Tour", url: null, children: [
       { icon: <IconCircle />, label: "List", url: '/tour' },
     ] },
-    { icon: <IconTag />, label: "Package", url: null, children: [
-      { icon: <IconCircle />, label: "List", url: '/package' },
-    ] },
-    { icon: <IconArticle />, label: "Package Tour", url: null, children: [
-      { icon: <IconCircle />, label: "List", url: '/package-tour' },
-    ] },
-    { icon: <IconMist />, label: "Package Itinerary", url: null, children: [
-      { icon: <IconCircle />, label: "List", url: '/package-itinerary' },
-    ] },
+    // { icon: <IconTag />, label: "Package", url: null, children: [
+    //   { icon: <IconCircle />, label: "List", url: '/package' },
+    // ] },
+    // { icon: <IconArticle />, label: "Package Tour", url: null, children: [
+    //   { icon: <IconCircle />, label: "List", url: '/package-tour' },
+    // ] },
+    // { icon: <IconMist />, label: "Package Itinerary", url: null, children: [
+    //   { icon: <IconCircle />, label: "List", url: '/package-itinerary' },
+    // ] },
     { icon: <IconList />, label: "Itinerary", url: null, children: [
       { icon: <IconCircle />, label: "List", url: '/itinerary' },
     ] },
     { icon: <IconFileText />, label: "Inclusion", url: null, children: [
       { icon: <IconCircle />, label: "List", url: '/inclusion' },
     ] },
-    { icon: <IconFileText />, label: "Package Inclusion", url: null, children: [
-      { icon: <IconCircle />, label: "List", url: '/package-inclusion' },
-    ] },
+    // { icon: <IconFileText />, label: "Package Inclusion", url: null, children: [
+    //   { icon: <IconCircle />, label: "List", url: '/package-inclusion' },
+    // ] },
     { icon: <IconNews />, label: "News", url: null, children: [
       { icon: <IconCircle />, label: "List", url: '/news' },
     ] },

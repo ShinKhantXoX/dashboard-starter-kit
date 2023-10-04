@@ -150,9 +150,9 @@ export const UpdateCity = ({ dataSource, update }) => {
                     // description={description}
                     dropdownPosition={"bottom"}
                     data={country}
-                    // defaultValue={dataSource?.country_id}
-                    nothingFound="No City Found"
-                    clearable
+                    defaultValue={countryId}
+                    value={countryId ? countryId : ''}
+                    nothingFound="No country found"
                     name="country_id"
                     required={true}
                     disabled={loading}

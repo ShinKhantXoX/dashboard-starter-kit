@@ -27,6 +27,7 @@ import { datetime } from "../../../helpers/dateFormat";
     useDocumentTitle("New Tour");
   
     const [name, setName] = useState('');
+    const [packageName, setPackageName] = useState('');
     const [city, setCity] = useState();
     const [overview, setOverview] = useState("");
     const [price ,setPrice] = useState('');
@@ -44,6 +45,7 @@ import { datetime } from "../../../helpers/dateFormat";
     const [cityId, setCityId] = useState();
     const [mainPayload, setMainPayload] = useState({
       name : '',
+      package_name : '',
       city_id : '',
       overview: '',
       price : '',
@@ -151,11 +153,12 @@ import { datetime } from "../../../helpers/dateFormat";
         for_whom : forWhom,
         start_date : datetime(startDate),
         end_date : datetime(endDate),
+        package_name : packageName,
         name : name,
         city_id : cityId,
         tour_photo : [selectImage?.url]
         })
-    }, [selectImage, name,cityId,overview,price,salePrice,location,depature,theme,duration,rating,type,forWhom,startDate,endDate])
+    }, [selectImage, packageName,name,cityId,overview,price,salePrice,location,depature,theme,duration,rating,type,forWhom,startDate,endDate])
   
     useEffect(() => {
         loadingData();
@@ -227,6 +230,21 @@ import { datetime } from "../../../helpers/dateFormat";
                   )
                 }
                 onChange={(e) => setName(e.target.value)
+                }
+              />
+
+              <TextInput
+                my={10}
+                placeholder="Enter Tour package name"
+                label="Package Name"
+                disabled={loading}
+                error={
+                  errors &&
+                  errors["package_name"] && (
+                    <FormValidationMessage message={errors["package_name"][0]} />
+                  )
+                }
+                onChange={(e) => setPackageName(e.target.value)
                 }
               />
 

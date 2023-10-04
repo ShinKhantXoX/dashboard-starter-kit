@@ -31,6 +31,13 @@ export const TourList = () => {
                 </div>
             )
         } },
+        { accessor: "package_name", title: 'Package Name', sortable: true, render : ({package_name}) => {
+            return (
+                <div>
+                    {package_name?.substring(0,5)} ...
+                </div>
+            )
+        } },
         { accessor: "city_name", title: 'City Name', sortable: true, render : ({city_name}) => {
             return (
                 <div>
@@ -59,7 +66,13 @@ export const TourList = () => {
                 </div>
             )
         } },
-        { accessor: "location", title: 'Mon', sortable: true },
+        { accessor: "location", title: 'Mon', sortable: true, render : ({location}) => {
+            return (
+                <div>
+                    {location?.substring(0,5)} ...
+                </div>
+            )
+        } },
         { accessor: "departure", title: 'Departure', sortable: true, render : ({depature}) => {
             return (
                 <div>

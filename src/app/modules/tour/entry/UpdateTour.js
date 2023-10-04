@@ -15,6 +15,7 @@ export const UpdateTour = ({ dataSource, update }) => {
     useDocumentTitle("Tour Detail And Update");
 
     const [name, setName] = useState(dataSource?.name ? dataSource.name : '');
+    const [packageName, setPackageName] = useState(dataSource?.package_name ? dataSource?.package_name : '');
     const [city, setCity] = useState();
     const [cityId, setCityId] = useState(dataSource?.city_name ? dataSource?.city_name : '');
     const [overview, setOverview] = useState(dataSource?.overview ? dataSource?.overview : '');
@@ -28,9 +29,11 @@ export const UpdateTour = ({ dataSource, update }) => {
     const [type, setType] = useState(dataSource?.type ? dataSource?.type : '');
     const [style, setStyle] = useState(dataSource?.style ? dataSource?.style : '');
     const [forWhom, setForWhom] = useState(dataSource?.for_whom ? dataSource?.for_whom : '');
-    const [date, setDate] = useState(dataSource?.date ? dataSource?.date : '');
+    const [date, setDate] = useState(dataSource?.start_date ? dataSource?.start_date : '');
+    const [endDate, setEndDate] = useState(dataSource?.end_date ? dataSource?.end_date : '');
     const [mainPayload, setMainPayload] = useState({
       name : '',
+      package_name : '',
       city_id : '',
       overview: '',
       price : '',
@@ -43,7 +46,8 @@ export const UpdateTour = ({ dataSource, update }) => {
       type : '',
       for_whom : '',
       tour_photo: '',
-      date : ''
+      start_date : '',
+      end_date : ''
     })
     const [errors, setErrors] = useState(null);
     const [id ,setId] = useState();
@@ -137,12 +141,14 @@ export const UpdateTour = ({ dataSource, update }) => {
         style: style,
         type : type,
         for_whom : forWhom,
-        date : datetime(date),
+        start_date : datetime(date),
+        end_date : datetime(endDate),
+        package_name : packageName,
         name : name,
         city_id : cityId,
-        tour_photo : selectImage?.url
+        tour_photo : selectImage?.url ? selectImage?.url : dataSource?.tour_photo
         })
-    }, [selectImage, name,cityId,overview,price,salePrice,location,depature,theme,duration,rating,type,forWhom,date])
+    }, [selectImage, packageName,name,cityId,overview,price,salePrice,location,depature,theme,duration,rating,type,forWhom,date,endDate])
   
     useEffect(() => {
         loadingData();
@@ -206,6 +212,22 @@ export const UpdateTour = ({ dataSource, update }) => {
                     onChange={(e) => setName(e.target.value)}
                     required
                 />
+
+                <TextInput
+                my={10}
+                placeholder="Enter Tour package name"
+                label="Package Name"
+                disabled={loading}
+                defaultValue={packageName}
+                error={
+                  errors &&
+                  errors["package_name"] && (
+                    <FormValidationMessage message={errors["package_name"][0]} />
+                  )
+                }
+                onChange={(e) => setPackageName(e.target.value)
+                }
+              />
 
                 <TextInput
                 my={10}
@@ -383,7 +405,17 @@ export const UpdateTour = ({ dataSource, update }) => {
                 }
               />
 
-              <DatePicker defaultValue={id?.date ? id?.date : ''} value={date} onChange={setDate} />
+              <label>Start Date</label>
+              <DatePicker 
+              // defaultDate={id?.start_date ? new Date(id?.start_date) : ''}
+              value={date}
+              onChange={setDate} />
+
+              <label>End Date</label>
+              <DatePicker 
+              // defaultDate={id?.start_date ? new Date(id?.start_date) : ''}
+              value={endDate}
+              onChange={setEndDate} />
 
 
                 <SaveButton 
