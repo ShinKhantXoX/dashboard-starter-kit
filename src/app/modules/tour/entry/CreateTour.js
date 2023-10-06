@@ -156,7 +156,7 @@ import { datetime } from "../../../helpers/dateFormat";
         package_name : packageName,
         name : name,
         city_id : cityId,
-        tour_photo : [selectImage?.url]
+        tour_photo : selectImage?.url
         })
     }, [selectImage, packageName,name,cityId,overview,price,salePrice,location,depature,theme,duration,rating,type,forWhom,startDate,endDate])
   
