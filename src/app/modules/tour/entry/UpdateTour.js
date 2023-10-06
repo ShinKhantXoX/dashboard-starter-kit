@@ -17,7 +17,7 @@ export const UpdateTour = ({ dataSource, update }) => {
     const [name, setName] = useState(dataSource?.name ? dataSource.name : '');
     const [packageName, setPackageName] = useState(dataSource?.package_name ? dataSource?.package_name : '');
     const [city, setCity] = useState();
-    const [cityId, setCityId] = useState(dataSource?.city_name ? dataSource?.city_name : '');
+    const [cityId, setCityId] = useState(dataSource?.city_id ? dataSource?.city_id : '');
     const [overview, setOverview] = useState(dataSource?.overview ? dataSource?.overview : '');
     const [price ,setPrice] = useState(dataSource?.price ? dataSource?.price : '');
     const [salePrice , setSalePrice] = useState(dataSource?.sale_price ? dataSource?.sale_price : '');
@@ -59,7 +59,8 @@ export const UpdateTour = ({ dataSource, update }) => {
     const selectImage = useSelector((state) => state.imageSelect);
 
     const loadingData = useCallback(async () => {
-        const response = await getReqeust("city");
+        const response = await getReqeust("city/list");
+        console.log(response);
 
         
         if(response && (response.status === 500 || response.status === 403)) {
@@ -74,16 +75,25 @@ export const UpdateTour = ({ dataSource, update }) => {
 
         if(response && response.status === 200) {
             // setDescription(response.data.toString());
-            let itemData = response?.data?.map((country) => {
-                return {
-                    value : country?.id,
-                    label: country?.name
-                }
-            });
-            setCity(itemData);
-            setLoading(false);
+            let itemData = response?.data?.data?.map((country) => {
+              return {
+                  value : country?.id,
+                  label: country?.name
+              }
+          });
+          setCity(itemData);
+          setLoading(false);
             return;
         }
+
+      //   let itemData = response?.data?.map((country) => {
+      //     return {
+      //         value : country?.id,
+      //         label: country?.name
+      //     }
+      // });
+      // setCity(itemData);
+      // setLoading(false);
 
     },[dispatch]);
 
@@ -189,17 +199,16 @@ export const UpdateTour = ({ dataSource, update }) => {
                     data={city}
                     defaultValue={dataSource?.city_id}
                     nothingFound="No City Found"
-                    clearable
                     name="city_id"
                     required={true}
                     disabled={loading}
-                    value={id?.city_id ? id?.city_id : ''}
+                    // value={cityId ? cityId : ''}
                     maxDropdownHeight={100}
                     error={errors && errors['city_id'] && (<FormValidationMessage message={errors['city_id'][0]} />)}                      
                     onChange={(e) => setCityId(e)}
                 />
-                )
-            }
+                 )
+            } 
 
                 <TextInput 
                     my={10}
