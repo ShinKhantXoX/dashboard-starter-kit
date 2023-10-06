@@ -59,10 +59,10 @@ import { DatePicker } from "@mantine/dates";
 
         if(response && response.status === 200) {
             // setDescription(response.data.toString());
-            let itemData = response?.data?.map((country) => {
+            let itemData = response?.data?.data?.map((inclusion) => {
                 return {
-                    value : country?.id,
-                    label: country?.name
+                    value : inclusion?.id,
+                    label: inclusion?.name
                 }
             });
             setTour(itemData);

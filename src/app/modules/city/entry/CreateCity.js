@@ -57,7 +57,7 @@ import {
 
         if(response && response.status === 200) {
             // setDescription(response.data.toString());
-            let itemData = response?.data?.map((country) => {
+            let itemData = response?.data?.data?.map((country) => {
                 return {
                     value : country?.id,
                     label: country?.name

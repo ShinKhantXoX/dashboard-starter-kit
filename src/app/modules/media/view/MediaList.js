@@ -19,7 +19,7 @@ export const MediaList = () => {
 
     const getPhotos = async () => {
         const response = await getReqeust("/photo/list");
-        setPhoto(response);
+        setPhoto(response?.data);
     }
 
     const handleSubmit = async (e) => {

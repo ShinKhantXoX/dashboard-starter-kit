@@ -32,7 +32,7 @@ const QueryFormDetail = () => {
         }
 
         if(response && response.status === 200) {
-            setData(response.data);
+            setData(response.data?.data);
             setLoading(false);
             return;
         }

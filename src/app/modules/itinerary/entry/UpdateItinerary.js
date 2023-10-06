@@ -54,7 +54,7 @@ export const UpdateItinerary = ({ dataSource, update }) => {
 
         if(response && response.status === 200) {
             // setDescription(response.data.toString());
-            let itemData = response?.data?.map((tour) => {
+            let itemData = response?.data?.data?.map((tour) => {
                 return {
                     value : tour?.id,
                     label: tour?.name

@@ -22,7 +22,7 @@ export const FileButton = ({ title, message, action, callbackUrl, url = null }) 
 
   const getPhotos = async () => {
     const response = await getReqeust("/photo/list");
-    setPhoto(response);
+    setPhoto(response?.data);
   };
 
   const handleSubmit = async (e) => {

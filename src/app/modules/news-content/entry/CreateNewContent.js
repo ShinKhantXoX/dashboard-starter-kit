@@ -61,7 +61,7 @@ import {
 
         if(response && response.status === 200) {
             // setDescription(response.data.toString());
-            let itemData = response?.data?.map((new_id) => {
+            let itemData = response?.data?.data?.map((new_id) => {
                 return {
                     value : new_id?.id,
                     label: new_id?.title

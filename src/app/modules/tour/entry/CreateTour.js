@@ -87,10 +87,10 @@ import { datetime } from "../../../helpers/dateFormat";
 
         if(response && response.status === 200) {
             // setDescription(response.data.toString());
-            let itemData = response?.data?.map((country) => {
+            let itemData = response?.data?.data?.map((city) => {
                 return {
-                    value : country?.id,
-                    label: country?.name
+                    value : city?.id,
+                    label: city?.name
                 }
             });
             setCity(itemData);

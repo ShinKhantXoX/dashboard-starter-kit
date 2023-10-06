@@ -20,6 +20,7 @@ export const CountryDetail = () => {
     const loadingData = useCallback(async () => {
         setLoading(true);
         const response = await getReqeust(`country/show/${params.id}`);
+        console.log(response);
 
         if(response && (response.status === 401 || response.status === 500 || response.status === 403)) {
             dispatch(updateNotification({
