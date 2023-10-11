@@ -51,7 +51,7 @@ import {
     const selectImage = useSelector((state) => state.imageSelect);
 
     const loadingData = useCallback(async () => {
-        const response = await getReqeust("tour/list?page=1&per_page=1000");
+        const response = await getReqeust("tour/list?page=1&per_page=1000&order=name&sort=asc");
         console.log(response);
 
         
