@@ -51,7 +51,7 @@ import {
     const selectImage = useSelector((state) => state.imageSelect);
 
     const loadingData = useCallback(async () => {
-        const response = await getReqeust("tour/list");
+        const response = await getReqeust("tour/list?page=1&per_page=1000");
         console.log(response);
 
         
@@ -175,7 +175,7 @@ import {
                     clearable
                     disabled={loading}
                     // value={tourId}
-                    maxDropdownHeight={100}
+                    // maxDropdownHeight={100}
                     error={errors && errors['tour'] && (<FormValidationMessage message={errors['tour'][0]} />)}                      
                     onChange={(e) => setTourId(e)}
                 />
