@@ -93,6 +93,21 @@ export const FileButton = ({ title, message, action, callbackUrl, url = null }) 
           </form>
         </Center>
 
+        <Flex direction={"row"} align={"center"} justify={"flex-end"}>
+          <Button variant="outline" mx={10} disabled={loading} onClick={close}>
+            {" "}
+            Cancel{" "}
+          </Button>
+          <Button
+            color="blue"
+            disabled={loading}
+            onClick={() => selectHandler()}
+          >
+            {" "}
+            Save{" "}
+          </Button>
+        </Flex>
+
         <div className=" flex-wrap">
           {photo?.data?.map((image) => {
 
@@ -119,21 +134,6 @@ export const FileButton = ({ title, message, action, callbackUrl, url = null }) 
             );
           })}
         </div>
-
-        <Flex direction={"row"} align={"center"} justify={"flex-end"}>
-          <Button variant="outline" mx={10} disabled={loading} onClick={close}>
-            {" "}
-            Cancel{" "}
-          </Button>
-          <Button
-            color="blue"
-            disabled={loading}
-            onClick={() => selectHandler()}
-          >
-            {" "}
-            Save{" "}
-          </Button>
-        </Flex>
       </Modal>
     </>
   );

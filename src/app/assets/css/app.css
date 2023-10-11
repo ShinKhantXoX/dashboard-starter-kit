@@ -41,6 +41,12 @@
     width: 800px !important;
 }
 
+.mantine-q2m2r0 {
+    width: 1000px !important;
+    max-width: 1000px;
+    min-width: 1000px;
+}
+
 .nav-side-icon {
     position: absolute;
     top: 0;
