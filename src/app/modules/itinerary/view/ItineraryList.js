@@ -26,7 +26,7 @@ export const ItineraryList = () => {
     const columns = [
         { accessor: "name", title: 'Country', sortable: true, render : ({name}) => {
             return (
-                <div>{name?.substring(0,5)} ...</div>
+                <div>{name?.substring(0,40)} ...</div>
             )
         } },
         { accessor: "description", title: 'Decription', sortable: true, render : ({description}) => {
