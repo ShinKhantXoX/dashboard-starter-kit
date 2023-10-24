@@ -3,7 +3,6 @@ import { IconUser,IconMenu2,IconLogin } from "@tabler/icons-react";
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { drawerOpen, drawerToggle } from "../../redux/drawerSlice";
-import defaultLogo from "../../assets/images/defaultLogo.png";
 import { useNavigate } from "react-router-dom";
 import { updateNotification } from "../../redux/notificationSlice";
 
@@ -33,12 +32,12 @@ export const DefaultHeader = () => {
             >
                 <Group className="group-row">
                     <Image 
-                        src={defaultLogo} 
+                        src={"/logo.png"} 
                         withPlaceholder 
                         width={40}
                         height={40}
                     />
-                    <Text> Shop Name </Text>
+                    <Text> Golden Yellow Travel </Text>
                 </Group>
                 
                 <Group>
